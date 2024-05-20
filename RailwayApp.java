@@ -26,6 +26,12 @@ public class RailwayApp extends JFrame {
         trainSchedule = new TrainSchedule();
         ticketSystem = new TicketSystem();
 
+        Passenger passenger = new Passenger();
+        passenger.inputPassengerData();
+
+        String passengerName = passenger.getName();
+        String studentID = passenger.getStudentID();
+
         JLabel greetingLabel = new JLabel("Вітаємо! ");
         greetingLabel.setHorizontalAlignment(JLabel.CENTER);
         add(greetingLabel, BorderLayout.NORTH);
@@ -329,6 +335,9 @@ class TrainSchedule {
         citiesTrains.put("Рівне", new ArrayList<>());
         citiesTrains.put("Чернігів", new ArrayList<>());
         citiesTrains.put("Ужгород", new ArrayList<>());
+        citiesTrains.put("Краматорськ", new ArrayList<>());
+        citiesTrains.put("Хелм", new ArrayList<>());
+        citiesTrains.put("Дніпро", new ArrayList<>());
 
         Train train1 = new Train("Інтерсіті 725", "Київ", "Львів", LocalTime.of(6, 45), LocalTime.of(12, 10), "Інтерсіті", 325);
         Train train2 = new Train("Нічний Експрес 10", "Київ", "Одеса", LocalTime.of(22, 35), LocalTime.of(6, 15), "Нічний Експрес", 460);
@@ -337,7 +346,7 @@ class TrainSchedule {
         Train train5 = new Train("368Л", "Луцьк", "Львів", LocalTime.of(17, 45), LocalTime.of(22, 12), "Стандарт", 267);
         Train train6 = new Train("756К Пасажирський", "Луцьк", "Київ", LocalTime.of(16, 27), LocalTime.of(22, 32), "Стандарт", 365);
         Train train7 = new Train("Нічний експрес 008Ш", "Одеса", "Харків", LocalTime.of(19, 56), LocalTime.of(13, 22), "Стандарт", 1047);
-        Train train8 = new Train("148Ш Пасажирський", "Одеса", "Київ", LocalTime.of(17, 23), LocalTime.of(9, 3), "Стандарт", 940);
+        Train train8 = new Train("148Ш Пасажирський", "Одеса", "Київ", LocalTime.of(17, 23), LocalTime.of(9, 3), "Швидкий", 940);
         Train train9 = new Train("078Л Пасажирський", "Ковель", "Одеса", LocalTime.of(17, 35), LocalTime.of(9, 8), "Стандарт", 933);
         Train train10 = new Train("Нічний Експрес 098Л", "Ковель", "Київ", LocalTime.of(15, 58), LocalTime.of(22, 54), "Стандарт", 426);
         Train train11 = new Train("149О Пасажирський", "Полтава", "Чернівці", LocalTime.of(16, 52), LocalTime.of(22, 59), "Стандарт", 367);
@@ -345,7 +354,17 @@ class TrainSchedule {
         Train train13 = new Train("Нічний Експрес 001Л", "Івано-Франківськ", "Харків", LocalTime.of(19, 53), LocalTime.of(22, 10), "Стандарт", 137);
         Train train14 = new Train("804Ш Пасажирський", "Рівне", "Львів", LocalTime.of(6, 40), LocalTime.of(9, 29), "Стандарт", 169);
         Train train15 = new Train("806Ш Пасажирський", "Рівне", "Львів", LocalTime.of(13, 20), LocalTime.of(16, 15), "Стандарт", 176);
-        Train train16 = new Train("368Л Пасажирський", "Луцьк", "Ужгород", LocalTime.of(19, 2), LocalTime.of(22, 12), "Стандарт", 190);
+        Train train16 = new Train("368Л Пасажирський", "Луцьк", "Ужгород", LocalTime.of(15, 2), LocalTime.of(18, 12), "Стандарт", 190);
+        Train train17 = new Train("368Л Пасажирський", "Луцьк", "Ужгород", LocalTime.of(19, 2), LocalTime.of(22, 12), "Стандарт", 190);
+        Train train18 = new Train("Нічний Експрес 029К", "Київ", "Ужгород", LocalTime.of(2, 26), LocalTime.of(7, 33), "Нічний Експрес", 305);
+        Train train19 = new Train("038Ш Пасажирський", "Одеса", "Ужгород", LocalTime.of(3, 20), LocalTime.of(9, 1), "Стандарт", 340);
+        Train train20 = new Train("368Л Пасажирський", "Луцьк", "Ужгород", LocalTime.of(19, 2), LocalTime.of(22, 12), "Стандарт", 190);
+        Train train21 = new Train("104Л Пасажирський", "Львів", "Краматорськ", LocalTime.of(18, 42), LocalTime.of(15, 17), "Стандарт", 1235);
+        Train train22 = new Train("Інтерсіті 712К ", "Київ", "Краматорськ", LocalTime.of(6, 45), LocalTime.of(13, 41), "Інтерсіті", 416);
+        Train train23 = new Train("094О Пасажирський", "Хелм", "Харків", LocalTime.of(1, 16), LocalTime.of(13, 53), "Стандарт", 806);
+        Train train24 = new Train("120Д Пасажирський", "Хелм", "Дніпро", LocalTime.of(10, 27), LocalTime.of(7, 28), "Стандарт", 1560);
+        Train train25 = new Train("733Д Пасажирський", "Дніпро", "Київ", LocalTime.of(6, 18), LocalTime.of(13, 41), "Стандарт", 446);
+        Train train26 = new Train("Нічний Експрес 079П", "Дніпро", "Львів", LocalTime.of(21, 58), LocalTime.of(5, 42), "Нічний Експрес", 464);
 
         addTrain(train1);
         addTrain(train2);
@@ -363,6 +382,16 @@ class TrainSchedule {
         addTrain(train14);
         addTrain(train15);
         addTrain(train16);
+        addTrain(train17);
+        addTrain(train18);
+        addTrain(train19);
+        addTrain(train20);
+        addTrain(train21);
+        addTrain(train22);
+        addTrain(train23);
+        addTrain(train24);
+        addTrain(train25);
+        addTrain(train26);
     }
 
     public String[] getCityNames() {
@@ -449,6 +478,23 @@ class Train {
 }
 
 class TicketSystem {
+    private List<Ticket> tickets;
+
+    public TicketSystem() {
+        tickets = new ArrayList<>();
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+    }
+
+    public void removeTicket(Ticket ticket) {
+        tickets.remove(ticket);
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 }
 
 class Ticket {
@@ -487,13 +533,19 @@ class Ticket {
     }
 }
 
+
 class Passenger {
     private String name;
-    private String passportNumber;
+    private String studentID;
 
-    public Passenger(String name, String passportNumber) {
+    public Passenger(String name, String studentID) {
         this.name = name;
-        this.passportNumber = passportNumber;
+        this.studentID = studentID;
+    }
+
+    public Passenger() {
+        this.name = "";
+        this.studentID = "";
     }
 
     public String getName() {
@@ -504,15 +556,22 @@ class Passenger {
         this.name = name;
     }
 
-    public String getPassportNumber() {
-        return passportNumber;
+    public String getStudentID() {
+        return studentID;
     }
 
-    public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+
+    public void inputPassengerData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введіть ім'я пасажира:");
+        this.name = scanner.nextLine();
+        System.out.println("Введіть номер студентського квитка:");
+        this.studentID = scanner.nextLine();
     }
 }
-
 class TrainTicketSystem {
     private List<Ticket> tickets;
     private List<Passenger> passengers;
